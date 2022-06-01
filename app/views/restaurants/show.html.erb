@@ -1,0 +1,17 @@
+<ul class="list-group">
+    <li class="list-group-item"><%= @restaurant.name %></li>
+    <li class="list-group-item"><%= @restaurant.address %></li>
+    <li class="list-group-item"><%= @restaurant.phone_number %></li>
+    <li class="list-group-item"><%= @restaurant.category %></li>
+</ul>
+<h3>Reviews</h3>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %> / <%= review.rating %> stars</li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back', restaurants_path, class: "btn btn-primary" %> |
+<%= link_to 'Leave a review', new_restaurant_path(@restaurant), class: "btn btn-primary" %>
+
+<%= render 'reviews/form', restaurant: @restaurant, review: @review %>
